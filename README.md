@@ -85,7 +85,20 @@ This following screenshot is an example of the output from the following disk fi
 <img src="Check if the EFS file system is mounted.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 
-<h3>📈 Optional – Monitor with CloudWatch</h3>
+<h5>Examining the performance by using Flexible IO</h5>
+ Flexible IO (fio) is a synthetic I/O benchmarking utility for Linux. It is used to benchmark and test Linux I/O subsystems. During boot, fio was automatically installed on your EC2 instance.
+
+ - Examine the write performance characteristics of your file system by entering:
+<br/>
+<img src="sudo fio.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+
+ The fio command will take few minutes to complete. The output should look like the example in the following screenshot. Make sure that you examine the output of your fio command, specifically the summary status information for this WRITE test.
+ <br/>
+<img src="Examining the performance by using Flexible IO.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+
+<h3>📈 Monitor with CloudWatch</h3>
 
 You can set up CloudWatch Alarms for:
 
@@ -95,15 +108,27 @@ PercentIOLimit
 
 Read/Write Throughput
 
-<h5>Examining the performance by using Flexible IO</h5>
- Flexible IO (fio) is a synthetic I/O benchmarking utility for Linux. It is used to benchmark and test Linux I/O subsystems. During boot, fio was automatically installed on your EC2 instance.
-
- - Examine the write performance characteristics of your file system by entering:
-<br/>
-<img src="Check if the EFS file system is mounted.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+- At the top of the AWS Management Console, in the search box, search for and choose CloudWatch.
+- In the navigation pane on the left, choose All Metrics.
+- In the All metrics tab, choose EFS.
+- Choose File System Metrics.
+- Select the row that has the PermittedThroughput Metric Name.
+- On the graph, If you do not see the line graph, adjust the time range of the graph down to 1h to display the period during which you ran the fio command
+- <br/>
+<img src="graph.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 
- The fio command will take few minutes to complete. The output should look like the example in the following screenshot. Make sure that you examine the output of your fio command, specifically the summary status information for this WRITE test.
- <br/>
-<img src="Check if the EFS file system is mounted.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
+<h3>📌 Notes</h3>
+EC2 and EFS must be in the same AZ and VPC
+
+EFS only supports Linux instances
+
+Make sure your EFS security group allows NFS (2049) access
+
+<h1>🧑‍💻 Author</h1>
+Uchenna Prince
+AWS Cloud Project • June 2025
+Lagos, Nigeria
+
+
+
