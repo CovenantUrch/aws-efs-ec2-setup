@@ -63,3 +63,25 @@ ssh -i your-key.pem ec2-user@<public-ip>
 '''
 
 In your EC2 terminal session, run the following command to install the required utilities:
+<br/>
+<img src="efs1.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+
+- Run the following command to create directory for mount: sudo mkdir efs.
+- At the top of the AWS Management Console, in the search box, search for and choose EFS.
+- Choose My First EFS File System.
+- In the Amazon EFS Console, on the top right corner of the page, choose Attach to open the Amazon EC2 mount instructions.
+- In your EC2 terminal session, Copy and run the entire command in the Using the NFS client section.
+
+The mount command should look similar to this example:
+
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-bce57914.efs.us-west-2.amazonaws.com:/ efs
+
+ The provided sudo mount... command uses the default Linux mount options.
+
+ Get a full summary of the available and used disk space usage by entering: sudo df -hT
+This following screenshot is an example of the output from the following disk filesystem command: 
+ <br/>
+<img src="efs1.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+
