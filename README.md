@@ -82,6 +82,28 @@ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,ret
  Get a full summary of the available and used disk space usage by entering: sudo df -hT
 This following screenshot is an example of the output from the following disk filesystem command: 
  <br/>
-<img src="efs1.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="Check if the EFS file system is mounted.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 
+<h3>📈 Optional – Monitor with CloudWatch</h3>
+
+You can set up CloudWatch Alarms for:
+
+BurstCreditBalance
+
+PercentIOLimit
+
+Read/Write Throughput
+
+<h5>Examining the performance by using Flexible IO</h5>
+ Flexible IO (fio) is a synthetic I/O benchmarking utility for Linux. It is used to benchmark and test Linux I/O subsystems. During boot, fio was automatically installed on your EC2 instance.
+
+ - Examine the write performance characteristics of your file system by entering:
+<br/>
+<img src="Check if the EFS file system is mounted.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+
+ The fio command will take few minutes to complete. The output should look like the example in the following screenshot. Make sure that you examine the output of your fio command, specifically the summary status information for this WRITE test.
+ <br/>
+<img src="Check if the EFS file system is mounted.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
