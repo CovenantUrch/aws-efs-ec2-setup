@@ -126,7 +126,7 @@ EFS only supports Linux instances
 Make sure your EFS security group allows NFS (2049) access
 
 <h1>🧑‍💻 Author</h1>
-Uchenna Prince
+Covenant Onwukwe
 AWS Cloud Project • June 2025
 Lagos, Nigeria
 
